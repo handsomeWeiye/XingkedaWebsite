@@ -1,17 +1,17 @@
 <template>
   <div class="case">
-    <banner img="../assets/img/bgtop.jpg" title="精典案例" />
+    <banner img="../assets/img/bgtop.jpg" title="产品中心" />
     <div class="case-section" v-loading="loading">
       <div class="case-section-content">
         <div class="case-section-content-list" v-for="(cas,index) in caseList" :key="index">
-          <img v-lazy="imgserver+cas.Img" />
+          <img v-lazy="cas.pic" />
           <div class="content-list-abstract" :class="{'abstract-active' : index%2!=1}">
-            <p class="abstract-title">{{cas.Title}}</p>
-            <p class="abstract-content">{{cas.Content}}</p>
+            <p class="abstract-title">{{cas.name}}</p>
+            <p class="abstract-content">{{cas.purchaseNotes}}</p>
             <div class="more">
               <router-link
                 class="text-decoration"
-                :to="{ name: 'casedetails', params: { id: cas.Id }}"
+                :to="{ name: 'casedetails', params: { id: cas.id }}"
               >
                 <span>more</span>
                 <img src="../assets/img/sanjiao.png" />
@@ -38,11 +38,11 @@ export default {
   mounted() {
     window.console.log("case");
     this.$http
-      .get("Cases/GetCasesAll")
+      .post("/shop/goods/list")
       .then(response => {
-        //console.log(response);
-        this.caseList = response.data;
-        //window.console.log(this.caseList);
+        // console.log(response);
+        this.caseList = response.data['data'];
+        window.console.log(this.caseList);
         this.loading = false;
       })
       .catch(function(error) {

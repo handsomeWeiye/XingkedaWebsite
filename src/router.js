@@ -22,7 +22,7 @@ let kejianrouter = new Router({
     {
       path: '/product',
       name: 'product',
-      component: () => import('./views/Product.vue'),
+      component: () => import('./views/product.vue'),
     },
     {
       path: '/case',

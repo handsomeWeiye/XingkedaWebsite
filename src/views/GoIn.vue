@@ -1,6 +1,6 @@
 <template>
   <div class="go-in">
-    <banner img="../assets/img/bgtop.jpg" title="走进科建" />
+    <banner img="../assets/img/bgtop.jpg" title="走进星科达" />
     <div class="section" v-loading="loading">
       <div class="section-content">
         <div class="content-summary">
@@ -8,15 +8,9 @@
             <p class="title">公司简介</p>
             <p class="eTitle">ABOUT US</p>
             <p class="content">
-              上海科建工程管理股份有限公司成立于2012年9月，注册资金500万。公司前身上海科建工程管理有限公司，
-              是一家从事专业工程技术服务及工程项目管理的企业。公司于2017年11月通过国家高新技术企业认定，
-              目前工程管理软件研发团队10人，包括硕士和研究生在内，平均年龄在35岁。公司自主研发工程项目管理
-              标准化+互联网协同工作系统平台，此软件广泛应用于工程项目管理过程，实现全覆盖检查、全过程控制、全方位协调的目标。
-              目前公司业务范围涉及上海、广东等多地，合作的单位有上海同济工程项目管理咨询有限公司、
-              上海华银日用品有限公司、中科建设开发总公司、广东怡轩房地产开发有限公司等多家知名企业。 立人立己、达人达己！公司一直秉承“
-              帮助施工单位解决技术问题、帮助业主解决协调问题 ”的管理理念，上海科建工程管理股份有限公司不断在工程项目管理领域开拓创新，
-              通过不断完善工程项目管理标准化+互联网协同工作系统平台，实现每项工程“无重大安全事故、无重大返工、工程施工材料无伪劣产品、
-              工程管理留下痕迹、施工过程可追溯”五大管理目标。
+              四川省星科达铸业有限公司主要经营：精密铸铁配件、精密铸钢配件、球墨配件、市政管网给排水管道及配件、市政设施球墨制品（井圈、井盖、水篦子）及合金材料制品的铸造、生产、加工、安装、销售。（依法须经批准的项目，经相关部门批准后方可开展经营活动）等产品。公司尊崇“踏实、拼搏、责任”的企业精神，并以诚信、共赢、开创经营理念，创造良好的企业环境，以全新的管理模式，完善的技术，周到的服务，卓越的品质为生存根本，我们始终坚持用户至上 用心服务于客户，坚持用自己的服务去打动客户。
+              欢迎各位新老客户来我公司参观指导工作，我公司具体的地址是：四川省眉山市洪雅县将军乡工业集中区胜科路33号 。
+              您如果对我们的产品感兴趣或者有任何的疑问，您可以直接给我们留言或直接与我们联络，我们将在收到您的信息后，会第一时间及时与您联络。
             </p>
           </div>
           <div class="summary-right">
@@ -27,7 +21,7 @@
           <i class="el-icon-arrow-down el-icon-arrow-down-active"></i>
         </el-divider>
         <!-- 发展历程 -->
-        <div class="content-course">
+        <!-- <div class="content-course">
           <div class="top">
             <h3>发展历程</h3>
             <p>DEVELOPMENT</p>
@@ -56,19 +50,18 @@
               <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
           </div>
-        </div>
+        </div> -->
 
         <div class="content-culture">
           <h3>企业文化</h3>
           <h3>CULTURE</h3>
-          <p>我们只专注一件事情——工程项目管理</p>
-          <span>确保工程无重大安全事故</span>
-          <span>确保工程施工单位无大面积返工</span>
-          <span>确保工程材料及设备无伪劣产品</span>
-          <span>确保工程管理留下痕迹、实施过程可追溯</span>
+          <p>我们只专注一件事情——产品质量</p>
+          <span>明日之星</span>
+          <span>科技引领</span>
+          <span>达到辉煌</span>
         </div>
         <!-- 公司荣誉 -->
-        <div class="content-honor">
+        <!-- <div class="content-honor">
           <div class="honor-big-img">
             <el-dialog :title="dialogTitle" :visible.sync="dialogTableVisible">
               <img v-lazy="dialogUrl" alt />
@@ -88,9 +81,9 @@
             </li>
           </ul>
           <p>点击图片查看大图</p>
-        </div>
+        </div> -->
         <!-- 团队风采 -->
-        <div class="content-team">
+        <!-- <div class="content-team">
           <div class="top">
             <h3>团队风采</h3>
             <p>TEAM</p>
@@ -100,9 +93,9 @@
               <div class="swiper-img" v-lazy:background-image="imgserver + team.Img"></div>
             </el-carousel-item>
           </el-carousel>
-        </div>
+        </div> -->
         <!-- 合作伙伴 -->
-        <div class="content-partner">
+        <!-- <div class="content-partner">
           <div class="top">
             <h3>合作伙伴</h3>
             <p>RARTNERS</p>
@@ -112,7 +105,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -129,7 +122,7 @@ export default {
   },
   data() {
     return {
-      loading: true,
+      loading: false,
       honorList: [],
       partnerImg: [],
       courseList: [],

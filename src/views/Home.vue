@@ -3,28 +3,28 @@
     <swiper id="swiperBox" v-bind:options="swiperOption" ref="mySwiper">
       <swiper-slide class="swiper-slide slide-one">
         <div class="page">
-          <h3>科建股份</h3>
-          <p>KeJian Stock</p>
+          <h3>星科达铸业</h3>
+          <p>Xingkeda Casting</p>
         </div>
-        <p class="slogan">立人立己 达人达己</p>
+        <p class="slogan">明日之星 科技引领 达到巅峰</p>
       </swiper-slide>
       <swiper-slide class="swiper-slide slide-two">
         <div class="page">
-          <h3>经典案例</h3>
-          <p>Suecessful Cass</p>
+          <h3>产品中心</h3>
+          <p>Product Center</p>
         </div>
         <ul class="case-item">
           <li
             v-for="(item,index) in caseList"
             :key="index"
-            v-lazy:background-image="imgserver + item.Img"
+            v-lazy:background-image="item.pic"
           >
             <router-link
               class="text-decoration"
-              :to="{ name: 'casedetails', params: { id: item.Id }}"
+              :to="{ name: 'casedetails', params: { id: item.id }}"
             >
               <div class="case-item-hover">
-                <p class="hover-title">{{item.Title}}</p>
+                <p class="hover-title">{{item.name}}</p>
                 <div class="bottom"></div>
                 <div class="more">
                   <span>MORE</span>
@@ -44,9 +44,9 @@
             <div :style="'order: '+ (i%2==0 ? 1: 3)">
               <router-link
                 class="text-decoration"
-                :to="{ name: 'newsdetails', params: { id: news.Id }}"
+                :to="{ name: 'newsdetails', params: { id: news.id }}"
               >
-                <div class="item-img" v-lazy:background-image="imgserver + news.Img"></div>
+                <div class="item-img" v-lazy:background-image="news.pic"></div>
               </router-link>
             </div>
             <div style="order: 2">
@@ -55,9 +55,9 @@
               </el-divider>
             </div>
             <div class="item-content" :style="'order: '+ (i%2==0 ? 3: 1)">
-              <h3>{{news.Title}}</h3>
-              <p>{{news.Content}}</p>
-              <span>{{news.CreateTime}}</span>
+              <h3>{{news.title}}</h3>
+              <p>{{news.descript}}</p>
+              <span>{{news.dateAdd}}</span>
             </div>
           </div>
         </div>
@@ -69,14 +69,14 @@
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
-  name: "HelloWorld",
+  name: "xingkeda",
   components: {
     swiper,
     swiperSlide
   },
   data() {
     return {
-      loading: true,
+      loading: false,
       caseList: [],
       newsList: [],
       swiperOption: {
@@ -125,13 +125,13 @@ export default {
   mounted() {
     this.$http
       .all([
-        this.$http.get("Cases/GetCasesAll"),
-        this.$http.get(`News?type=1&num=3`)
+        this.$http.get("/shop/goods/list"),
+        this.$http.get('/cms/news/list')
       ])
       .then(
         this.$http.spread((responseCases, responseNews) => {
-          this.caseList = responseCases.data;
-          this.newsList = responseNews.data;
+          this.caseList = responseCases.data['data'];
+          this.newsList = responseNews.data['data'];
           this.loading = false;
         })
       );
@@ -171,7 +171,7 @@ export default {
     padding: 30px 0;
   }
 }
-//经典案例
+//产品中心
 .case-item {
   width: 1100px;
   height: 500px;
@@ -201,7 +201,7 @@ export default {
     }
   }
 }
-//经典案例hover
+//产品中心hover
 .case-item-hover {
   width: 100%;
   height: 100%;

@@ -3,10 +3,11 @@
     <banner img="../assets/img/bgtop.jpg" />
     <div class="NewsDetails-product">
       <div class="NewsDetails-product-content">
-        <img v-lazy="imgserver+newsIdList.Img" alt />
-        <p class="product-title">{{newsIdList.Title}}</p>
-        <p class="product-time">{{newsIdList.CreateTime}}</p>
-        <p class="product-content">{{newsIdList.Content}}</p>
+        <img v-lazy="newsIdList.pic" alt />
+        <p class="product-title">{{newsIdList.title}}</p>
+        <p class="product-time">{{newsIdList.dateAdd}}</p>
+        <!-- <p class="product-content">{{newsIdList.content}}</p> -->
+        <div v-html="newsIdList.content" class="product-content">{{newsIdList.content}}</div>
       </div>
     </div>
   </div>
@@ -35,10 +36,10 @@ export default {
   methods: {
     loadData() {
       this.$http
-        .get(`News/GetNewsById/${this.pid}`)
+        .get(`/cms/news/detail`,{params:{id:this.pid}})
         .then(response => {
           //console.log(response);
-          this.newsIdList = response.data;
+          this.newsIdList = response.data['data'];
           window.console.log(this.newsIdList);
         })
         .catch(function(error) {

@@ -1,15 +1,7 @@
 <template>
   <div class="product">
-    <banner img="../assets/img/bgtop.jpg" title="产品中心" />
+    <banner img="../assets/img/bgtop.jpg" title="公司理念" />
     <div class="product-content" v-loading="loading">
-      <div class="p-video">
-        <video-player
-          class="video-player vjs-custom-skin"
-          ref="videoPlayer"
-          :playsinline="true"
-          :options="playerOptions"
-        ></video-player>
-      </div>
       <div class="lacking">
         <h3 class="title">传统管理模式不足</h3>
         <div class="lacking-bottom">
@@ -114,7 +106,7 @@ import Banner from "../components/Banner";
 export default {
   data() {
     return {
-      loading: true,
+      loading: false,
       videoSrc: "http://www.shkjem.com/video/kj.mp4",
       playerOptions: {
         playbackRates: [0.5, 1.0, 1.5, 2.0, 4.0, 8.0], //可选择的播放速度

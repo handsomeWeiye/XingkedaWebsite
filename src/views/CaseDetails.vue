@@ -3,10 +3,10 @@
     <banner img="../assets/img/bgtop.jpg" />
     <div class="case-product">
       <div class="case-product-content">
-        <img v-lazy="imgserver+caseIdList.Img" alt />
-        <p class="product-title">{{caseIdList.Title}}</p>
-        <p class="product-time">{{caseIdList.CreateTime}}</p>
-        <p class="product-content">{{caseIdList.Content}}</p>
+        <img v-lazy="caseIdList.basicInfo.pic" alt />
+        <!-- <p class="product-title">{{caseIdList.basicInfo.title}}</p>
+        <p class="product-time">{{caseIdList.basicInfo.dateAdd}}</p>
+        <div v-html="caseIdList.content" class="product-content">{{caseIdList.content}}</div> -->
       </div>
     </div>
   </div>
@@ -34,10 +34,10 @@ export default {
   methods: {
     loadData() {
       this.$http
-        .get(`Cases/GetCasesById/${this.pid}`)
+        .get(`/shop/goods/detail`,{params:{id:this.pid}})
         .then(response => {
           //console.log(response);
-          this.caseIdList = response.data;
+          this.caseIdList = response.data['data'];
           window.console.log(this.caseIdList);
         })
         .catch(function(error) {
